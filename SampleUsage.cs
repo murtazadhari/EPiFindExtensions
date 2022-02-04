@@ -5,15 +5,15 @@ public class SampleUsage
 	public void Test()
 	{
 	// Tags is list/array of strings indexed
-		client.Search<T>()
+		client.Search<Article>()
 		.AndAny(new string[]{"a", "b", "c"}, (v, c) => v.Tags.MatchContained(c));
 		
-	// Topic is ContentReference
-		client.Search<T>()
-		 .OrAny(new ContentRefence[]{new ContentRefence(), new ContentRefence()}, (v, c) => v.Topic.Match(c))
+	// Author is ContentReference
+		client.Search<Article>()
+		 .OrAny(new ContentRefence[]{new ContentRefence(), new ContentRefence()}, (v, c) => v.Author.Match(c))
 		 
 		// Example of Class Person is indexed with property Name
-		client.Search<T>()
-		 .OrAny(new Person[]{new Person{Name="Ali"}, new Person{Name ="Murtaza"}}, (v, c) => v.Person.MatchContained(s => s.Name, c.Name))
+		client.Search<Recipe>()
+		 .OrAny(new Ingredient[]{new Ingredient{Name="Salt"}, new Ingredient{Name ="Pepper"}}, (v, c) => v.Ingredients.MatchContained(s => s.Name, c.Name))
 	}
 }
