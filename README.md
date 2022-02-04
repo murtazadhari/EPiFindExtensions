@@ -12,7 +12,7 @@ client.Search<Article>()
 .For("test")
 .OrAny(new ContentRefence[]{new ContentRefence(), new ContentRefence()}, (v, c) => v.Author.Match(c))
 		 
-// Example of Class Person is indexed with property Name
+// Example of Class Ingredient which is indexed as list of Ingredient in Content Recipe
 client.Search<Recipe>()
 .For("test")
 .OrAny(new Ingredient[]{new Ingredient{Name="Salt"}, new Ingredient{Name ="Pepper"}}, (v, c) => v.Ingredients.MatchContained(s => s.Name, c.Name))
