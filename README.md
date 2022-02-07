@@ -1,5 +1,5 @@
 # EPiFindExtensions
-This Repository Contains the Utility EPiFind extensions methods
+This Repository Contains the Utility EPiFind extensions methods list to build OrAny and AndAny conditions
 
 ```c#
 // Tags is list/array of strings indexed
