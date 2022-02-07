@@ -1,24 +1,8 @@
-using EnumsNET;
 using EPiServer.Core;
 using EPiServer.Find;
 using EPiServer.Find.Api.Querying;
-using EPiServer.Find.Api.Querying.Queries;
-using EPiServer.Find.Cms;
-using EPiServer.Find.Helpers;
-using EPiServer.Find.Statistics;
-using EPiServer.Find.Statistics.Api;
-using EPiServer.Find.Tracing;
-using EPiServer.Find.UnifiedSearch;
-using NRL.Shared.Collections;
-using NRL.Shared.Expressions;
-using NRL.Shared.Extensions;
-using NRL.Shared.Types;
-using NRL.Web.Business.Find;
-using NRL.Web.Business.Models;
-using NRL.Web.Business.Models.Pages;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 
 
@@ -26,7 +10,7 @@ public static class ITypeSearchExtensions
 {
    public static ITypeSearch<T> AndAny<T, TVal>(this ITypeSearch<T> query, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
         {
-            if (values.IsNullOrEmpty())
+            if (values == null)
                 return query;
 
             var builder = new FilterBuilder<T>(query.Client).Any(values, filterExpression);
@@ -35,7 +19,7 @@ public static class ITypeSearchExtensions
 
         public static ITypeSearch<T> OrAny<T, TVal>(this ITypeSearch<T> query, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
         {
-            if (values.IsNullOrEmpty())
+            if (values == null)
                 return query;
 
             var builder = new FilterBuilder<T>(query.Client).Any(values, filterExpression);
