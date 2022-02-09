@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 public static class ITypeSearchExtensions
 {
-   public static ITypeSearch<T> AndAny<T, TVal>(this ITypeSearch<T> query, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
+   	public static ITypeSearch<T> AndAny<T, TVal>(this ITypeSearch<T> query, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
         {
             if (values == null)
                 return query;
@@ -26,7 +26,7 @@ public static class ITypeSearchExtensions
             return query.OrFilter(builder);
         }
 		
-		 private static FilterBuilder<T> Any<T, TVal>(this FilterBuilder<T> builder, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
+	private static FilterBuilder<T> Any<T, TVal>(this FilterBuilder<T> builder, IEnumerable<TVal> values, Expression<Func<T, TVal, Filter>> filterExpression)
         {
             // Expression visitor to modify the parameter in the given filter expression 
             var visitor = new ParameterReplacerVisitor<Func<T, TVal, Filter>, Func<T, Filter>>();
